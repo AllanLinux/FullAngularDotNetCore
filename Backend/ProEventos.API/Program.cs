@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using ProEventos.API.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// Get connection from appsettings
+var connectionString = builder.Configuration.GetConnectionString("Default");
+// Add DbContext
+builder.Services.AddDbContext<DataContext>(
+    options => options.UseSqlite(connectionString)
+);
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
