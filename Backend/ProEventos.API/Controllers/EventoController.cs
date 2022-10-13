@@ -48,7 +48,8 @@ public class EventoController : ControllerBase
     [HttpGet("{id}")]
     public IEnumerable<Evento> GetById(int id)
     {
-        return _context.Eventos.Where(x => x.EventoId == id);
+        return _context.Eventos.Where(
+            x => x.EventoId == id);
     }
 
     [HttpPost]
